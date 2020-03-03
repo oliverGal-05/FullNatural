@@ -13,6 +13,10 @@ function sortCategories() {
     for (let category of categories) {
         category.addEventListener('click', function () {
             const cards = document.querySelectorAll("[data-label='card']");
+            if (selectedCategories.has("All")) {
+                showAllCards();
+                selectedCategories.clear();
+            }
             if (!selectedCategories.has(category.firstElementChild.innerHTML)) {
                 selectedCategories.add(category.firstElementChild.innerHTML);
                 console.log(selectedCategories);
@@ -21,10 +25,7 @@ function sortCategories() {
                 selectedCategories.delete(category.firstElementChild.innerHTML);
                 setAttributes(cards, selectedCategories)
             }
-            if (selectedCategories.has("All")) {
-                showAllCards();
-                selectedCategories.clear();
-            }
+
         })
     }
 }

@@ -44,24 +44,43 @@
     <!--<strong th:text="${category.name}">Category Title</strong>-->
     <!--</div>-->
 
-
-    <div class="dropdown category-container">
-        <button class="btn btn-danger dropdown-toggle category" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item category category-name" href="#">All</a>
-            <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
-                <a class="dropdown-item category-name" th:text="${category.name}" href="#">Categories</a>
+    <div class="btn-group">
+        <div class="dropdown category-container">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="category">
+                    <a class="dropdown-item category-name" href="#">All</a>
+                </div>
+                <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
+                    <a class="dropdown-item category-name" th:text="${category.name}" href="#">Categories</a>
+                </div>
             </div>
         </div>
+
+
+        <div class="dropdown supplier-container">
+            <button class="btn btn-danger dropdown-toggle supplier" type="button" id="supplierDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Suppliers
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item supplier supplier-name" href="#">All</a>
+                <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
+                    <a class="dropdown-item supplier-name" th:text="${supplier.name}" href="#">Suppliers</a>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <br>
     <br>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card">
+            <div class="card" data-label="card">
                 <img class="" src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
