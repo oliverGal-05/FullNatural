@@ -50,7 +50,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="category">
-                    <a class="dropdown-item category-name" href="#">All</a>
+                    <a class="dropdown-item category-name" href="#">All categories</a>
                 </div>
                 <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
                     <a class="dropdown-item category-name" th:text="${category.name}" href="#">Categories</a>
@@ -65,7 +65,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="supplier">
-                    <a class="dropdown-item supplier-name" href="#">All</a>
+                    <a class="dropdown-item supplier-name" href="#">All suppliers</a>
                 </div>
                 <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
                     <a class="dropdown-item supplier-name" th:text="${supplier.name}" href="#">Suppliers</a>

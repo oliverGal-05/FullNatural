@@ -38,12 +38,12 @@ function sortSuppliers() {
 
 function setAttributes(elements, storage) {
     for (let element of elements) {
-        if (!storage.has(element.lastElementChild.innerHTML)) {
+        if (!storage.has(element.lastElementChild.innerHTML) && !storage.has(element.firstElementChild.innerHTML)) {
             element.setAttribute("class", "hidden-card")
             console.log(element + "Hidden")
         } else {
             element.setAttribute("class", "card");
-            console.log(element+"Shown")
+            console.log(element + "Shown")
         }
     }
 }

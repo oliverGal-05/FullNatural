@@ -1,55 +1,36 @@
 const selected = new Set();
-
-function setSessionStorage(name, object) {
-    console.log(object);
-    sessionStorage.setItem(name, JSON.stringify(object));
-}
-
-function getSessionStorage(name) {
-    return JSON.parse(sessionStorage.getItem(name));
-}
+const selectedCategories = new Set();
+selected.add(selectedCategories);
+const selectedSuppliers = new Set();
+selected.add(selectedSuppliers);
 
 function sortCategories() {
     const categories = document.querySelectorAll(".category");
     for (let category of categories) {
         category.addEventListener('click', function () {
             const cards = document.querySelectorAll("[data-label='card']");
-            if (!selected.has(category.firstElementChild.innerHTML)) {
-                selected.add(category.firstElementChild.innerHTML);
-                console.log(selected);
-                setAttributes(cards, selected);
+            if (!selectedCategories.has(category.firstElementChild.innerHTML)) {
+                selectedCategories.add(category.firstElementChild.innerHTML);
+                setAttributes(cards, selectedCategories);
             } else {
-                selected.delete(category.firstElementChild.innerHTML);
-                setAttributes(cards, selected)
+                selectedCategories.delete(category.firstElementChild.innerHTML);
+                setAttributes(cards, selectedCategories)
             }
-            if (selected.has("All")) {
+            if (selectedCategories.has("All categories")) {
+                selectedCategories.clear();
+                setAttributes(cards, selectedCategories)
+            }
+            if (selectedCategories.size === 0) {
+                selectedCategories.clear();
+                setAttributes(cards, selectedCategories)
+            }
+            if (selectedCategories.size === 0 && selectedSuppliers.size === 0) {
                 showAllCards();
-                selected.clear();
+                selectedSuppliers.clear();
+                selectedCategories.clear()
             }
-            if (selected.size === 0) {
-                showAllCards();
-                selected.clear();
-            }
-
+            console.log(selected);
         })
-    }
-}
-
-function setAttributes(elements, storage) {
-    for (let element of elements) {
-        if (!storage.has(element.lastElementChild.innerHTML || !storage.has(element.firstElementChild.innerHTML))) {
-            element.setAttribute("class", "hidden-card")
-        } else {
-            element.setAttribute("class", "card");
-        }
-    }
-}
-
-
-function showAllCards() {
-    const hiddenCards = document.querySelectorAll(".hidden-card");
-    for (let hiddenCard of hiddenCards) {
-        hiddenCard.setAttribute("class", "card")
     }
 }
 
@@ -58,27 +39,52 @@ function sortSuppliers() {
     for (let category of suppliers) {
         category.addEventListener('click', function () {
             const cards = document.querySelectorAll("[data-label='card']");
-            if (!selected.has(category.lastElementChild.innerHTML)) {
-                selected.add(category.lastElementChild.innerHTML);
-                console.log(selected)
-                setAttributes(cards, selected);
+            if (!selectedSuppliers.has(category.lastElementChild.innerHTML)) {
+                selectedSuppliers.add(category.lastElementChild.innerHTML);
+                setAttributes(cards, selectedSuppliers);
             } else {
-                selected.delete(category.lastElementChild.innerHTML);
-                setAttributes(cards, selected)
+                selectedSuppliers.delete(category.lastElementChild.innerHTML);
+                setAttributes(cards, selectedSuppliers)
             }
-            if (selected.has("All")) {
+            if (selectedSuppliers.has("All suppliers")) {
+                selectedSuppliers.clear();
+                setAttributes(cards, selectedSuppliers)
+            }
+            if (selectedSuppliers.size === 0) {
+                selectedSuppliers.clear();
+                setAttributes(cards, selectedSuppliers)
+            }
+            if (selectedCategories.size === 0 && selectedSuppliers.size === 0) {
                 showAllCards();
-                selected.clear();
+                selectedSuppliers.clear();
+                selectedCategories.clear()
             }
-            if (selected.size === 0) {
-                showAllCards();
-                selected.clear();
-            }
-
+            console.log(selected)
         })
     }
 }
 
 
-sortCategories();
+function setAttributes(elements, storage) {
+    for (let element of elements) {
+        if (storage.has(element.lastElementChild.innerHTML || storage.has(element.firstElementChild.innerHTML))) {
+            element.setAttribute("class", "card");
+            console.log("Shown the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
+        } else {
+            element.setAttribute("class", "hidden-card");
+            console.log("Hidden the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
+        }
+    }
+}
+
+
+function showAllCards() {
+    const hiddenCards = document.querySelectorAll(".hidden-card");
+    for (let hiddenCard of hiddenCards) {
+        hiddenCard.setAttribute("class", "card");
+        console.log("Shown all")
+    }
+}
+
 sortSuppliers();
+sortCategories();
