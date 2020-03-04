@@ -38,9 +38,16 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
-        <div class="divider"></div>
-        <a class="btn btn-success" id="btn-cart" href="#"> </a>
+        <div class="flex-container">
+            <div>
+                <strong th:text="${category.name}">Category Title</strong>
+            </div>
+            <div class="divider"></div>
+            <div style="align-self: flex-end">
+                <a class="btn btn-success" id="btn-cart" href="#"> </a>
+
+            </div>
+        </div>
     </div>
 
     <div id="products" class="row">

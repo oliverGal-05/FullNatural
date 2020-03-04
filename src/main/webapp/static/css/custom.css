@@ -86,7 +86,7 @@ body{
 }
 
 .divider{
-    width:67px;
+    width:865px;
     display:inline-block;
 }
 .card-top{
@@ -94,4 +94,9 @@ body{
     min-width: 200px;
     height: 300px;
     margin: 0 auto;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
 }

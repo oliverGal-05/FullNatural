@@ -41,7 +41,7 @@ public class Initializer implements ServletContextListener {
 
         //setting up products and printing it
         productDataStore.add(new Product("Scitec 100% Whey Protein Professional 920g", 6800, "HUF", "This product's combination of Whey Concentrate and Whey Isolate provides you with a balanced protein blend, with added digestive enzymes and Amino Acids, to improve...", protein, scitec));
-        productDataStore.add(new Product("Biotech USA Iso Whey Zero 1000g", 7000, "HUF", "Premium quality sugar-free*, Lactose-free* and Gluten-free whey protein isolate with native whey isolate basic ingredient, added BCAA and Glutamine amino acids.", protein, biotech));
+        productDataStore.add(new Product("Biotech USA Iso Whey Zero 2.27Kg", 18000, "HUF", "Premium quality sugar-free*, Lactose-free* and Gluten-free whey protein isolate with native whey isolate basic ingredient, added BCAA and Glutamine amino acids.", protein, biotech));
         productDataStore.add(new Product("MHP Super Premium Whey Protein 920g", 7300, "HUF", "Super Premium Whey Protein + is an ultra premium formula driven by a superior absorbing hydrolyzed whey protein and anti-catabolic branched-chain keto acids (BCKAs)", protein, mhp));
 
         productDataStore.add(new Product("Scitec Micronized Mega Creatine 150 capsules", 5500,"HUF", "yesyes guuud", creatine, scitec));
