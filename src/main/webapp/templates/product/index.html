@@ -29,7 +29,8 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 
-    <script src="../../static/js/category.js" defer></script>
+    <script src="../../static/js/sorting.js" defer></script>
+    <!--<script src="../../static/js/supplier.js" defer></script>-->
 
 </head>
 
@@ -40,9 +41,6 @@
 </div>
 
 <div class="container">
-    <!--<div class="card">-->
-    <!--<strong th:text="${category.name}">Category Title</strong>-->
-    <!--</div>-->
 
     <div class="btn-group">
         <div class="dropdown category-container">
@@ -60,16 +58,17 @@
             </div>
         </div>
 
-
         <div class="dropdown supplier-container">
-            <button class="btn btn-danger dropdown-toggle supplier" type="button" id="supplierDropdownMenuButton"
+            <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Suppliers
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item supplier supplier-name" href="#">All</a>
-                <!--<div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">-->
-                    <!--<a class="dropdown-item supplier-name" th:text="${supplier.name}" href="#">Suppliers</a>-->
+                <div class="supplier">
+                    <a class="dropdown-item supplier-name" href="#">All</a>
+                </div>
+                <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
+                    <a class="dropdown-item supplier-name" th:text="${supplier.name}" href="#">Suppliers</a>
                 </div>
             </div>
         </div>
@@ -81,7 +80,7 @@
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card" data-label='card'>
-                <label class="type"th:text="${prod.getProductCategory.name}">Category</label>
+                <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
                 <img class="" src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
@@ -96,6 +95,7 @@
                         <a class="btn btn-success" href="#">Add to cart</a>
                     </div>
                 </div>
+                <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
             </div>
         </div>
     </div>
