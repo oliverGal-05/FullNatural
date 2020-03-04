@@ -76,10 +76,13 @@ body{
     background: url("/static/img/dumbbel.jpeg") center;
 }
 #btn-cart{
-    background: url("/static/img/emptyCart.resized.png") no-repeat;
+    background: url("/static/img/emptyCart.resized.png") no-repeat center;
     border: none;
     width: 128px;
     height: 128px;
+}
+#btn-cart:hover{
+    background-color: RGB(68, 184, 172);
 }
 
 .divider{
