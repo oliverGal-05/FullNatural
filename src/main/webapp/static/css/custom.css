@@ -72,3 +72,17 @@
 body{
     background-color: RGB(68, 184, 172);
 }
+#dumbbell{
+    background: url("/static/img/dumbbel.jpeg") center;
+}
+#btn-cart{
+    background: url("/static/img/emptyCart.resized.png") no-repeat;
+    border: none;
+    width: 128px;
+    height: 128px;
+}
+
+.divider{
+    width:67px;
+    display:inline-block;
+}
