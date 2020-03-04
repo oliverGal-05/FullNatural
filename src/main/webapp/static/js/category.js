@@ -13,17 +13,18 @@ function sortCategories() {
     for (let category of categories) {
         category.addEventListener('click', function () {
             const cards = document.querySelectorAll("[data-label='card']");
-            if (selectedCategories.has("All")) {
-                showAllCards();
-                selectedCategories.clear();
-            }
+            // console.log(cards);
             if (!selectedCategories.has(category.firstElementChild.innerHTML)) {
                 selectedCategories.add(category.firstElementChild.innerHTML);
-                console.log(selectedCategories);
+                console.log(category.firstElementChild.innerHTML);
                 setAttributes(cards, selectedCategories);
             } else {
                 selectedCategories.delete(category.firstElementChild.innerHTML);
                 setAttributes(cards, selectedCategories)
+            }
+            if (selectedCategories.has("All")) {
+                showAllCards();
+                selectedCategories.clear();
             }
 
         })
@@ -32,6 +33,7 @@ function sortCategories() {
 
 function setAttributes(elements, storage) {
     for (let element of elements) {
+        console.log(element.firstElementChild)
         if (!storage.has(element.firstElementChild.innerHTML)) {
             element.setAttribute("class", "hidden-card")
         } else {

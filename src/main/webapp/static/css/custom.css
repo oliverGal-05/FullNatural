@@ -61,3 +61,7 @@
 .hidden-card {
     display: none;
 }
+
+.type {
+    display: none;
+}
