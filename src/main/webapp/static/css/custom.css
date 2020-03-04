@@ -89,6 +89,11 @@ body{
     width:865px;
     display:inline-block;
 }
+.divider-natural{
+    height: 5px;
+    display: inline-block;
+}
+
 .card-top{
     max-width: 200px;
     min-width: 200px;
@@ -99,4 +104,29 @@ body{
 .flex-container {
     display: flex;
     flex-direction: row;
+}
+
+.sidebar-text {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 2%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    vertical-align: text-top;
+    font-size: 35px;
+    font-weight: revert;
+    color: white;
+    font-family: "Liberation Mono";
+    writing-mode: vertical-rl;
+}
+
+.sidebar-text > span{
+    float:left;
+    -webkit-transform: rotate(-90deg);
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
