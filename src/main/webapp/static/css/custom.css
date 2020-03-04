@@ -78,14 +78,20 @@ body{
 #btn-cart{
     background: url("/static/img/emptyCart.resized.png") no-repeat center;
     border: none;
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
 }
 #btn-cart:hover{
-    background-color: RGB(68, 184, 172);
+    transform: scale(1.5);
 }
 
 .divider{
     width:67px;
     display:inline-block;
+}
+.card-top{
+    max-width: 200px;
+    min-width: 200px;
+    height: 300px;
+    margin: 0 auto;
 }
