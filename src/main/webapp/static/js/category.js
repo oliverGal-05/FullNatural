@@ -26,6 +26,10 @@ function sortCategories() {
                 showAllCards();
                 selectedCategories.clear();
             }
+            if (selectedCategories.size === 0) {
+                showAllCards();
+                selectedCategories.clear();
+            }
 
         })
     }
