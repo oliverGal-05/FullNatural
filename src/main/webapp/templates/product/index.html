@@ -27,13 +27,55 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+
+    <!--Custom CSS and JS-->
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <script src="../../static/js/sorting.js" defer></script>
 </head>
 
 <body id="background">
 
 <div id="header">
 </div>
+
+
+
+    <!--Category dropdown -->
+
+    <div class="btn-group">
+        <div class="dropdown category-container">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button type="checkbox" class="reset-category-btn dropdown-item category-name" >All categories</button>
+                <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
+                    <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Supplier dropdown-->
+
+        <div class="dropdown supplier-container">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Suppliers
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="reset-suppliers-btn dropdown-item supplier-name" >All suppliers</button>
+                <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
+                    <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Reset filters button-->
+
+        <div>
+            <button class="reset-filters btn btn-danger">Reset Filters</button>
+        </div>
 
 <div class="container" id="opacity">
     <div class="sidebar-text > span" style="width:2%">
@@ -52,12 +94,20 @@
 
             </div>
         </div>
+
     </div>
+    <br>
+    <br>
+
+    <!--Product section-->
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card opacity" id="card">
-                <img class="card-top" src="http://placehold.it/200x300/000/fff"
+
+            <div class="card opacity" data-label='card'>
+                <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
+                <img class="" src="http://placehold.it/400x250/000/fff"
+
                      th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
@@ -71,6 +121,7 @@
                         <a class="btn btn-success" id="add-btn" href="#">Add to cart</a>
                     </div>
                 </div>
+                <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
             </div>
         </div>
     </div>

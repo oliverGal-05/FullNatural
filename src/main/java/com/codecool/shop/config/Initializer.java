@@ -32,6 +32,7 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(mhp);
 
         //setting up a new product category
+
         ProductCategory protein = new ProductCategory("Protein powder", "Supplement", "yes");
         productCategoryDataStore.add(protein);
         ProductCategory creatine = new ProductCategory("Creatine", "Supplement", "no");
