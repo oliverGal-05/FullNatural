@@ -14,6 +14,14 @@ function resetCategories() {
     )
 }
 
+function resetCategoriesButtonSetup() {
+    const resetCategoriesButton = document.querySelector(".reset-category-btn");
+    console.log(resetCategoriesButton);
+    resetCategoriesButton.addEventListener('click', function () {
+        resetCategories()
+    })
+}
+
 function sortCategories() {
     for (let category of categories) {
         category.addEventListener('click', function () {
@@ -50,6 +58,14 @@ function resetSuppliers() {
     );
 }
 
+function resetSuppliersButtonSetup() {
+    const resetSuppliersButton = document.querySelector(".reset-suppliers-btn");
+    console.log(resetSuppliersButton);
+    resetSuppliersButton.addEventListener('click', function () {
+        resetSuppliers()
+    })
+}
+
 function sortSuppliers() {
     for (let category of suppliers) {
         category.addEventListener('click', function () {
@@ -69,7 +85,6 @@ function sortSuppliers() {
             if (selectedSuppliers.has("All suppliers")) {
                 resetSuppliers();
                 setAttributes(cards)
-
             }
             if (selectedSuppliers.size === 0) {
                 resetSuppliers();
@@ -79,11 +94,17 @@ function sortSuppliers() {
     }
 }
 
-function resetFilters() {
+function resetFiltersButtonSetup() {
     let resetButton = document.querySelector(".reset-filters");
     console.log(resetButton);
     resetButton.addEventListener('click', function () {
         resetCategories();
+        for (let category of suppliers) {
+            category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter-on ");
+        }
+        for (let category of categories) {
+            category.firstElementChild.setAttribute("class", "dropdown-item supplier-name filter-on ");
+        }
         resetCategories();
         showAllCards()
 
@@ -115,9 +136,12 @@ function showAllCards() {
 
 window.onload = function () {
     resetSuppliers();
-    resetCategories()
+    resetCategories();
+    resetSuppliersButtonSetup();
+    resetCategoriesButtonSetup()
 };
+
 
 sortSuppliers();
 sortCategories();
-resetFilters();
+resetFiltersButtonSetup();

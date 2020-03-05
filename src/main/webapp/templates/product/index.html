@@ -50,9 +50,7 @@
                 Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="category">
-                    <a type="checkbox" class="dropdown-item category-name" href="#">All categories</a>
-                </div>
+                <button type="checkbox" class="reset-category-btn dropdown-item category-name" >All categories</button>
                 <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
                     <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
                 </div>
@@ -67,9 +65,7 @@
                 Suppliers
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="supplier">
-                    <a class="dropdown-item supplier-name" href="#">All suppliers</a>
-                </div>
+                <button class="reset-suppliers-btn dropdown-item supplier-name" >All suppliers</button>
                 <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
                     <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
                 </div>
