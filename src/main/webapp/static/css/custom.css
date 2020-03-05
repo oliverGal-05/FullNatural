@@ -88,6 +88,7 @@
     background-size: cover; /* Resize the background image to cover the entire container */
     border-bottom: #111111 solid;
     border-bottom-width: 38px;
+    margin-bottom: 20px;
 }
 
 body {
@@ -106,7 +107,8 @@ body {
     width: 60px;
     height: 60px;
     display: inline-block;
-    padding-left: 7%;
+    position: absolute;
+    right: 11px;
 }
 
 #btn-cart:hover {
