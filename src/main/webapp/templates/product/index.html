@@ -27,10 +27,9 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+    <!--Custom CSS and JS-->
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
-
     <script src="../../static/js/sorting.js" defer></script>
-    <!--<script src="../../static/js/supplier.js" defer></script>-->
 
 </head>
 
@@ -42,6 +41,8 @@
 
 <div class="container">
 
+    <!--Category dropdown -->
+
     <div class="btn-group">
         <div class="dropdown category-container">
             <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
@@ -50,13 +51,15 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="category">
-                    <a class="dropdown-item category-name" href="#">All categories</a>
+                    <a type="checkbox" class="dropdown-item category-name" href="#">All categories</a>
                 </div>
                 <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
-                    <a class="dropdown-item category-name" th:text="${category.name}" href="#">Categories</a>
+                    <a class="dropdown-item category-name filter" th:text="${category.name}" href="#">Categories</a>
                 </div>
             </div>
         </div>
+
+        <!--Supplier dropdown-->
 
         <div class="dropdown supplier-container">
             <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
@@ -68,14 +71,21 @@
                     <a class="dropdown-item supplier-name" href="#">All suppliers</a>
                 </div>
                 <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
-                    <a class="dropdown-item supplier-name" th:text="${supplier.name}" href="#">Suppliers</a>
+                    <a class="dropdown-item supplier-name filter " th:text="${supplier.name}" href="#">Suppliers</a>
                 </div>
             </div>
         </div>
 
+        <!--Reset filters button-->
+
+        <div>
+            <button class="reset-filters btn btn-danger">Reset Filters</button>
+        </div>
     </div>
     <br>
     <br>
+
+    <!--Product section-->
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">

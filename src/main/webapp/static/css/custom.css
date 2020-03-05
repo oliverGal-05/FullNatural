@@ -69,3 +69,9 @@
 .producer {
     display: none;
 }
+
+.filter-on {
+    background-color: #ff142b;
+}
+
+
