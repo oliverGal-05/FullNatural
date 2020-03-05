@@ -54,7 +54,7 @@
                     <a type="checkbox" class="dropdown-item category-name" href="#">All categories</a>
                 </div>
                 <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
-                    <a class="dropdown-item category-name filter" th:text="${category.name}" href="#">Categories</a>
+                    <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                     <a class="dropdown-item supplier-name" href="#">All suppliers</a>
                 </div>
                 <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
-                    <a class="dropdown-item supplier-name filter " th:text="${supplier.name}" href="#">Suppliers</a>
+                    <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
                 </div>
             </div>
         </div>

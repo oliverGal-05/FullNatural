@@ -20,11 +20,13 @@ function sortCategories() {
             const cards = document.querySelectorAll("[data-label='card']");
             if (!selectedCategories.has(category.firstElementChild.innerHTML)) {
                 selectedCategories.add(category.firstElementChild.innerHTML);
+                category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter-on ");
                 setAttributes(cards);
             } else {
                 selectedCategories.delete(category.firstElementChild.innerHTML);
+                category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter");
                 setAttributes(cards);
-                selectedCategories.remove("All categories")
+                selectedCategories.remove("All categories");
                 console.log(selectedCategories)
             }
             if (selectedCategories.has("All categories")) {
@@ -54,10 +56,12 @@ function sortSuppliers() {
             const cards = document.querySelectorAll("[data-label='card']");
             if (!selectedSuppliers.has(category.lastElementChild.innerHTML)) {
                 selectedSuppliers.add(category.lastElementChild.innerHTML);
+                category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter-on ");
                 setAttributes(cards);
             } else {
                 selectedSuppliers.delete(category.lastElementChild.innerHTML);
-                setAttributes(cards)
+                category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter");
+                setAttributes(cards);
                 if (selectedSuppliers.has("All suppliers")) {
                     selectedSuppliers.remove("All suppliers")
                 }
