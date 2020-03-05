@@ -27,19 +27,18 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+
     <!--Custom CSS and JS-->
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
     <script src="../../static/js/sorting.js" defer></script>
-
 </head>
 
-<body>
+<body id="background">
 
-<div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+<div id="header">
 </div>
 
-<div class="container">
+
 
     <!--Category dropdown -->
 
@@ -77,6 +76,25 @@
         <div>
             <button class="reset-filters btn btn-danger">Reset Filters</button>
         </div>
+
+<div class="container" id="opacity">
+    <div class="sidebar-text > span" style="width:2%">
+        <span>F</span><span>U</span><span>L</span><span>L</span>
+        <span>  +  </span>
+        <span>N</span><span>A</span><span>T</span><span>U</span><span>R</span><span>A</span><span>L</span>
+    </div>
+    <div class="card">
+        <div class="flex-container" style="background: none" id="card">
+            <div>
+                <strong th:text="${category.name}">Category Title</strong>
+            </div>
+            <div class="divider"></div>
+            <div style="align-self: flex-end">
+                <a class="btn btn-success" id="btn-cart" href="#"> </a>
+
+            </div>
+        </div>
+
     </div>
     <br>
     <br>
@@ -85,9 +103,11 @@
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card" data-label='card'>
+
+            <div class="card opacity" data-label='card'>
                 <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
                 <img class="" src="http://placehold.it/400x250/000/fff"
+
                      th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
@@ -98,13 +118,14 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-success" id="add-btn" href="#">Add to cart</a>
                     </div>
                 </div>
                 <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 
