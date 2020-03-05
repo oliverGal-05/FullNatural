@@ -36,45 +36,47 @@
 <body id="background">
 
 <div id="header">
+    <div class="btn-group">
+        <div class="dropdown category-container">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button type="checkbox" class="reset-category-btn dropdown-item category-name">All categories</button>
+                <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
+                    <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Supplier dropdown-->
+
+        <div class="dropdown supplier-container">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="supplierDropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Suppliers
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="reset-suppliers-btn dropdown-item supplier-name">All suppliers</button>
+                <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
+                    <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Reset filters button-->
+
+        <div>
+            <button class="reset-filters btn btn-secondary">Reset Filters</button>
+        </div>
+
 </div>
 
 
 <!--Category dropdown -->
 
-<div class="btn-group">
-    <div class="dropdown category-container">
-        <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button type="checkbox" class="reset-category-btn dropdown-item category-name">All categories</button>
-            <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
-                <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
-            </div>
-        </div>
-    </div>
 
-    <!--Supplier dropdown-->
-
-    <div class="dropdown supplier-container">
-        <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Suppliers
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="reset-suppliers-btn dropdown-item supplier-name">All suppliers</button>
-            <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
-                <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
-            </div>
-        </div>
-    </div>
-
-    <!--Reset filters button-->
-
-    <div>
-        <button class="reset-filters btn btn-danger">Reset Filters</button>
-    </div>
 
     <div class="container" id="opacity">
 
@@ -87,8 +89,10 @@
     </div>
 </div>
 
-<br>
-<br>
+<div>
+    <button class="reset-filters btn btn-secondary" id="btn-cart"></button>
+</div>
+
 <!---->
 <!--<div class="card">-->
 <!--<div class="flex-container" style="background: none" id="card">-->
@@ -108,7 +112,7 @@
 <div id="products" class="row">
     <div class="col col-sm-12 col-md-6 col-lg-4" id="card" th:each="prod,iterStat : ${products}">
 
-        <div class="card opacity" data-label='card'>
+        <div class="card opacity" data-label='card' id="cards">
             <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
             <img class="" src="http://placehold.it/400x250/000/fff"
 
@@ -117,7 +121,7 @@
                 <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                 <p class="card-text" th:text="${prod.description}">Product description... </p>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="card-body">
                 <div class="card-text">
                     <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                 </div>

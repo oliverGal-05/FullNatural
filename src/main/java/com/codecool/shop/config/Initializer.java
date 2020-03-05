@@ -41,16 +41,16 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(preWorkout);
 
         //setting up products and printing it
-        productDataStore.add(new Product("Scitec 100% Whey Protein Professional 920g", 6800, "HUF", "This product's combination of Whey Concentrate and Whey Isolate provides you with a balanced protein blend, with added digestive enzymes and Amino Acids, to improve...", protein, scitec));
+        productDataStore.add(new Product("Scitec 100% Whey Protein Professional 920g", 6800, "HUF", "This product's combination of Whey Concentrate and Whey Isolate provides you with a balanced protein blend, with added digestive enzymes...", protein, scitec));
         productDataStore.add(new Product("Biotech USA Iso Whey Zero 2.27Kg", 18000, "HUF", "Premium quality sugar-free*, Lactose-free* and Gluten-free whey protein isolate with native whey isolate basic ingredient, added BCAA and Glutamine amino acids.", protein, biotech));
-        productDataStore.add(new Product("MHP Super Premium Whey Protein 920g", 7300, "HUF", "Super Premium Whey Protein + is an ultra premium formula driven by a superior absorbing hydrolyzed whey protein and anti-catabolic branched-chain keto acids (BCKAs)", protein, mhp));
+        productDataStore.add(new Product("MHP Super Premium Whey Protein 920g", 7300, "HUF", "Super Premium Whey Protein + is an ultra premium formula driven by a superior absorbing hydrolyzed whey protein and anti-catabolic bran...", protein, mhp));
 
-        productDataStore.add(new Product("Scitec Micronized Mega Creatine 150 capsules", 5500,"HUF", "yesyes guuud", creatine, scitec));
-        productDataStore.add(new Product("Biotech 100% Micronized Creatine Monohydrate 300g", 3500,"HUF", "even guud eeeerrr", creatine, biotech));
-        productDataStore.add(new Product("MHP Pure Micronized Creatine Monohydrate 300g", 3700, "HUF", "is it gud enough?", creatine, biotech));
+        productDataStore.add(new Product("Scitec Micronized Mega Creatine 150 capsules", 5500,"HUF", "By supplementing your diet with Creatine, your muscles will retain more Creatine", creatine, scitec));
+        productDataStore.add(new Product("Biotech 100% Micronized Creatine Monohydrate 300g", 3500,"HUF", "Creatine increases your performance in a successive burst of short-term, high ...", creatine, biotech));
+        productDataStore.add(new Product("MHP Pure Micronized Creatine Monohydrate 300g", 3700, "HUF", "Creatine is a naturally occurring substance in our bodies; it helps volumize", creatine, mhp));
 
         productDataStore.add(new Product("Scitec Big Bang Pre-Workout Stimulant", 5800, "HUF", "flavor: mango", preWorkout, scitec));
         productDataStore.add(new Product("Biotech USA Concentrated Pre-Workout Formula", 5400, "HUF", "flavor: droid", preWorkout, biotech));
-        productDataStore.add(new Product("MHP Max Pre-Workout 300g alazat", 5500, "HUF", "flavor: valami, Energize, Pump, Perform", preWorkout, mhp));
+        productDataStore.add(new Product("MHP Max Pre-Workout 300g alazat", 5500, "HUF", "flavor: chocolate", preWorkout, mhp));
     }
 }
