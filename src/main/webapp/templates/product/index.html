@@ -39,94 +39,95 @@
 </div>
 
 
+<!--Category dropdown -->
 
-    <!--Category dropdown -->
-
-    <div class="btn-group">
-        <div class="dropdown category-container">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button type="checkbox" class="reset-category-btn dropdown-item category-name" >All categories</button>
-                <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
-                    <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
-                </div>
+<div class="btn-group">
+    <div class="dropdown category-container">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="categoryDropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button type="checkbox" class="reset-category-btn dropdown-item category-name">All categories</button>
+            <div class="dropdown-item category" th:each="category, iterStat : ${categories}">
+                <a class="dropdown-item category-name filter-on" th:text="${category.name}" href="#">Categories</a>
             </div>
         </div>
-
-        <!--Supplier dropdown-->
-
-        <div class="dropdown supplier-container">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Suppliers
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="reset-suppliers-btn dropdown-item supplier-name" >All suppliers</button>
-                <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
-                    <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
-                </div>
-            </div>
-        </div>
-
-        <!--Reset filters button-->
-
-        <div>
-            <button class="reset-filters btn btn-danger">Reset Filters</button>
-        </div>
-
-<div class="container" id="opacity">
-    <div class="sidebar-text > span" style="width:2%">
-        <span>F</span><span>U</span><span>L</span><span>L</span>
-        <span>  +  </span>
-        <span>N</span><span>A</span><span>T</span><span>U</span><span>R</span><span>A</span><span>L</span>
     </div>
-    <div class="card">
-        <div class="flex-container" style="background: none" id="card">
-            <div>
-                <strong th:text="${category.name}">Category Title</strong>
-            </div>
-            <div class="divider"></div>
-            <div style="align-self: flex-end">
-                <a class="btn btn-success" id="btn-cart" href="#"> </a>
 
+    <!--Supplier dropdown-->
+
+    <div class="dropdown supplier-container">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="supplierDropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Suppliers
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="reset-suppliers-btn dropdown-item supplier-name">All suppliers</button>
+            <div class="dropdown-item supplier" th:each="supplier, iterStat : ${suppliers}">
+                <a class="dropdown-item supplier-name filter-on " th:text="${supplier.name}" href="#">Suppliers</a>
             </div>
         </div>
-
     </div>
-    <br>
-    <br>
 
-    <!--Product section-->
+    <!--Reset filters button-->
 
-    <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
+    <div>
+        <button class="reset-filters btn btn-danger">Reset Filters</button>
+    </div>
 
-            <div class="card opacity" data-label='card'>
-                <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
-                <img class="" src="http://placehold.it/400x250/000/fff"
+    <div class="container" id="opacity">
 
-                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                    </div>
-                    <div class="card-text">
-                        <a class="btn btn-success" id="add-btn" href="#">Add to cart</a>
-                    </div>
-                </div>
-                <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
-            </div>
+        <!--Sidebar-->
+        <div class="sidebar-text > span" style="width:2%">
+            <span>F</span><span>U</span><span>L</span><span>L</span>
+            <span>  +  </span>
+            <span>N</span><span>A</span><span>T</span><span>U</span><span>R</span><span>A</span><span>L</span>
         </div>
     </div>
 </div>
 
+<br>
+<br>
+<!---->
+<!--<div class="card">-->
+<!--<div class="flex-container" style="background: none" id="card">-->
+<!--<div>-->
+<!--<strong th:text="${category.name}">Category Title</strong>-->
+<!--</div>-->
+<!--<div class="divider"></div>-->
+<!--<div style="align-self: flex-end">-->
+<!--<a class="btn btn-success" id="btn-cart" href="#"> </a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!---->
+
+<!--Product section-->
+
+<div id="products" class="row">
+    <div class="col col-sm-12 col-md-6 col-lg-4" id="card" th:each="prod,iterStat : ${products}">
+
+        <div class="card opacity" data-label='card'>
+            <label class="type" th:text="${prod.getProductCategory.name}">Category</label>
+            <img class="" src="http://placehold.it/400x250/000/fff"
+
+                 th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+            <div class="card-header">
+                <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                <p class="card-text" th:text="${prod.description}">Product description... </p>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                </div>
+                <div class="card-text">
+                    <a class="btn btn-success" id="add-btn" href="#">Add to cart</a>
+                </div>
+            </div>
+            <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
+        </div>
+    </div>
 </div>
 
 <div th:replace="footer.html :: copy"></div>

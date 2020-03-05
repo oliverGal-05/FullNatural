@@ -72,14 +72,14 @@
 }
 
 .filter-on {
-    background-color: #ff142b;
+    background-color: lawngreen;
 }
 
 .filter {
-    background-color: grey;
+    background-color: red;
 }
 
-#header{
+#header {
     background-image: url("/static/img/header.jpg"); /* The image used */
     background-color: #cccccc; /* Used if the image is unavailable */
     height: 400px; /* You must set a specified height */
@@ -89,34 +89,39 @@
     border-bottom: #111111 solid;
     border-bottom-width: 20px;
 }
-body{
+
+body {
     background-color: RGB(68, 184, 172);
 }
-#footer{
+
+#footer {
     color: white;
     background-color: #111111;
     border: none;
 }
-#btn-cart{
+
+#btn-cart {
     background: url("/static/img/emptyCart.resized.png") no-repeat center;
     border: none;
     width: 100px;
     height: 100px;
 }
-#btn-cart:hover{
+
+#btn-cart:hover {
     transform: scale(1.5);
 }
 
-.divider{
-    width:865px;
-    display:inline-block;
+.divider {
+    width: 865px;
+    display: inline-block;
 }
-.divider-natural{
+
+.divider-natural {
     height: 5px;
     display: inline-block;
 }
 
-.card-top{
+.card-top {
     max-width: 200px;
     min-width: 200px;
     height: 300px;
@@ -146,13 +151,14 @@ body{
     writing-mode: vertical-rl;
 }
 
-.sidebar-text > span{
-    float:left;
+.sidebar-text > span {
+    float: left;
     -webkit-transform: rotate(-90deg);
     margin-bottom: 3%;
     margin-top: 3%;
 }
-#background{
+
+#background {
     background-image: url("/static/img/xUP3tf.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -162,12 +168,27 @@ body{
     background-size: cover;
 
 }
-.card opacity{
+
+.card opacity {
     opacity: 0.5%;
-    border: 15px solid #111111; !important;
+    border: 15px solid #111111;
+!important;
 }
+
 #card {
-    border: #111111 solid 3px;
+    /*border: #111111 solid 3px;*/
     background: none;
+    width: 50%;
 }
+
+.btn-group {
+    padding-left: 2%;
+}
+
+.row {
+    padding-left: 5%;
+    padding-right: 3%;
+}
+
+
 
