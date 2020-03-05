@@ -68,12 +68,16 @@
     background-position: top; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
+    border-bottom: #111111 solid;
+    border-bottom-width: 20px;
 }
 body{
     background-color: RGB(68, 184, 172);
 }
-#dumbbell{
-    background: url("/static/img/dumbbel.jpeg") center;
+#footer{
+    color: white;
+    background-color: #111111;
+    border: none;
 }
 #btn-cart{
     background: url("/static/img/emptyCart.resized.png") no-repeat center;
@@ -130,3 +134,22 @@ body{
     margin-bottom: 3%;
     margin-top: 3%;
 }
+#background{
+    background-image: url("/static/img/xUP3tf.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+.card opacity{
+    opacity: 0.5%;
+    border: 15px solid #111111; !important;
+}
+#card {
+    border: #111111 solid 3px;
+    background: none;
+}
+
