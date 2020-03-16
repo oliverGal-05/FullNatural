@@ -49,6 +49,6 @@ INSERT INTO product (name, default_price, currency_string,description,product_ca
 
 ('Scitec Big Bang Pre-Workout Stimulant', 5800, 'HUF', 'flavor: mango', 3, 1),
 ('Biotech USA Concentrated Pre-Workout Formula', 5400, 'HUF', 'flavor: droid', 3, 2),
-('MHP Max Pre-Workout 300g alazat', 5500, 'HUF', 'flavor: chocolate', 3, 2)
+('MHP Max Pre-Workout 300g alazat', 5500, 'HUF', 'flavor: chocolate', 3, 3)
 ;
 
