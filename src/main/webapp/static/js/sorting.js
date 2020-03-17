@@ -117,9 +117,11 @@ function setAttributes(elements) {
         if (selectedCategories.has(element.firstElementChild.innerHTML) && selectedSuppliers.has(element.lastElementChild.innerHTML)) {
             console.log(selectedCategories);
             element.setAttribute("class", "card");
+            element.parentElement.setAttribute("class", "col col-sm-12 col-md-6 col-lg-4");
             console.log("Shown the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
         } else {
             element.setAttribute("class", "hidden-card");
+            element.parentElement.setAttribute("class", "hidden-card");
             console.log("Hidden the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
         }
     }
