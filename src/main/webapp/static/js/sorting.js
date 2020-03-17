@@ -121,7 +121,7 @@ function setAttributes(elements) {
             console.log("Shown the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
         } else {
             element.setAttribute("class", "hidden-card");
-            element.parentElement.setAttribute("class", "hidden-card");
+            element.parentElement.setAttribute("class", "hidden-col-card");
             console.log("Hidden the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)
         }
     }
@@ -130,10 +130,15 @@ function setAttributes(elements) {
 
 function showAllCards() {
     const hiddenCards = document.querySelectorAll(".hidden-card");
+    const hiddenColCards = document.querySelectorAll(".hidden-col-card");
     for (let hiddenCard of hiddenCards) {
         hiddenCard.setAttribute("class", "card");
         console.log("Shown all")
     }
+    for (let colCard of hiddenColCards) {
+        colCard.setAttribute("class","col col-sm-12 col-md-6 col-lg-4" );
+    }
+
 }
 
 window.onload = function () {

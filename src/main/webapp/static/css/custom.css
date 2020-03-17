@@ -62,6 +62,9 @@
 .hidden-card {
     display: none;
 }
+.hidden-col-card {
+    display: none;
+}
 
 .type {
     display: none;
