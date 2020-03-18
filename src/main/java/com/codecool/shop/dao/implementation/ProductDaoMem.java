@@ -7,6 +7,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ public class ProductDaoMem implements ProductDao {
 
     private List<Product> data = new ArrayList<>();
     private static ProductDaoMem instance = null;
-    Connection cursor = ConnToDB.getDb();
+    private static Connection cursor = ConnToDB.getDb();
 
     /* A private Constructor prevents any other class from instantiating.
      */
@@ -34,22 +35,22 @@ public class ProductDaoMem implements ProductDao {
         return instance;
     }
 
+
     @Override
     public void add(Product product) {
         product.setId(data.size() + 1);
         data.add(product);
-        //testing database connection
-        try {
-            PreparedStatement statement = cursor.prepareStatement("SELECT * FROM product" );
-            statement.execute();
-            ResultSet resultSet = statement.getResultSet();
-            while (resultSet.next()){
-                System.out.println(resultSet.getString("name"));
-            }
+        /*try {
+            PreparedStatement prepAdd = cursor.prepareStatement("INSERT INTO product" + "(name, product_category_id, supplier_id, default_price, currency_string, description) VALUES  (?,?,?,?,?,?)",
+                    ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
+            prepAdd.setString(1, product.getName());
+            prepAdd.setInt(2, product.getProductCategory().getId());
+            prepAdd.setInt(3, (int) product.getSupplier().getId());
+            prepAdd.setString(4, String.valueOf(product.getDefaultCurrency()));
+            prepAdd.setString(5, product.getDescription());
         } catch (SQLException e){
             e.printStackTrace();
-        }
-
+        }*/
     }
 
     @Override
