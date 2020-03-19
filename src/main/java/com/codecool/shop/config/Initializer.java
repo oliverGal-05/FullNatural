@@ -27,24 +27,17 @@ public class Initializer implements ServletContextListener {
 
         //setting up a new product category
 
-        ProductCategory protein = new ProductCategory("Protein powder", "Supplement", "yes");
-        productCategoryDataStore.add(protein);
-        ProductCategory creatine = new ProductCategory("Creatine", "Supplement", "no");
-        productCategoryDataStore.add(creatine);
-        ProductCategory preWorkout = new ProductCategory("Pre-Workout", "Supplement", "yeah");
-        productCategoryDataStore.add(preWorkout);
-
         //setting up products and printing it
-        productDataStore.add(new Product("Scitec 100% Whey Protein Professional 920g", 6800, "HUF", "This product's combination of Whey Concentrate and Whey Isolate provides you with a balanced protein blend, with added digestive enzymes...", protein, supplierDataStore.find(1)));
-        productDataStore.add(new Product("Biotech USA Iso Whey Zero 2.27Kg", 18000, "HUF", "Premium quality sugar-free*, Lactose-free* and Gluten-free whey protein isolate with native whey isolate basic ingredient, added BCAA and Glutamine amino acids.", protein, supplierDataStore.find(2)));
-        productDataStore.add(new Product("MHP Super Premium Whey Protein 920g", 7300, "HUF", "Super Premium Whey Protein + is an ultra premium formula driven by a superior absorbing hydrolyzed whey protein and anti-catabolic bran...", protein, supplierDataStore.find(3)));
+        /*productDataStore.add(new Product("Scitec 100% Whey Protein Professional 920g", 6800, "HUF", "This product's combination of Whey Concentrate and Whey Isolate provides you with a balanced protein blend, with added digestive enzymes...", productCategoryDataStore.find(1), supplierDataStore.find(1)));
+        productDataStore.add(new Product("Biotech USA Iso Whey Zero 2.27Kg", 18000, "HUF", "Premium quality sugar-free*, Lactose-free* and Gluten-free whey protein isolate with native whey isolate basic ingredient, added BCAA and Glutamine amino acids.", productCategoryDataStore.find(1), supplierDataStore.find(2)));
+        productDataStore.add(new Product("MHP Super Premium Whey Protein 920g", 7300, "HUF", "Super Premium Whey Protein + is an ultra premium formula driven by a superior absorbing hydrolyzed whey protein and anti-catabolic bran...", productCategoryDataStore.find(1), supplierDataStore.find(3)));
 
-        productDataStore.add(new Product("Scitec Micronized Mega Creatine 150 capsules", 5500,"HUF", "By supplementing your diet with Creatine, your muscles will retain more Creatine", creatine, supplierDataStore.find(1)));
-        productDataStore.add(new Product("Biotech 100% Micronized Creatine Monohydrate 300g", 3500,"HUF", "Creatine increases your performance in a successive burst of short-term, high ...", creatine, supplierDataStore.find(2)));
-        productDataStore.add(new Product("MHP Pure Micronized Creatine Monohydrate 300g", 3700, "HUF", "Creatine is a naturally occurring substance in our bodies; it helps volumize", creatine, supplierDataStore.find(3)));
+        productDataStore.add(new Product("Scitec Micronized Mega Creatine 150 capsules", 5500,"HUF", "By supplementing your diet with Creatine, your muscles will retain more Creatine", productCategoryDataStore.find(2), supplierDataStore.find(1)));
+        productDataStore.add(new Product("Biotech 100% Micronized Creatine Monohydrate 300g", 3500,"HUF", "Creatine increases your performance in a successive burst of short-term, high ...", productCategoryDataStore.find(2), supplierDataStore.find(2)));
+        productDataStore.add(new Product("MHP Pure Micronized Creatine Monohydrate 300g", 3700, "HUF", "Creatine is a naturally occurring substance in our bodies; it helps volumize", productCategoryDataStore.find(2), supplierDataStore.find(3)));
 
-        productDataStore.add(new Product("Scitec Big Bang Pre-Workout Stimulant", 5800, "HUF", "flavor: mango", preWorkout, supplierDataStore.find(1)));
-        productDataStore.add(new Product("Biotech USA Concentrated Pre-Workout Formula", 5400, "HUF", "flavor: droid", preWorkout, supplierDataStore.find(2)));
-        productDataStore.add(new Product("MHP Max Pre-Workout 300g alazat", 5500, "HUF", "flavor: chocolate", preWorkout, supplierDataStore.find(3)));
+        productDataStore.add(new Product("Scitec Big Bang Pre-Workout Stimulant", 5800, "HUF", "flavor: mango", productCategoryDataStore.find(3), supplierDataStore.find(1)));
+        productDataStore.add(new Product("Biotech USA Concentrated Pre-Workout Formula", 5400, "HUF", "flavor: droid", productCategoryDataStore.find(3), supplierDataStore.find(2)));
+        productDataStore.add(new Product("MHP Max Pre-Workout 300g alazat", 5500, "HUF", "flavor: chocolate", productCategoryDataStore.find(3), supplierDataStore.find(3)));*/
     }
 }
