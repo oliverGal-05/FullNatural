@@ -14,7 +14,6 @@ import java.util.List;
 
 public class ProductCategoryDaoMem implements ProductCategoryDao {
 
-    private List<ProductCategory> data = new ArrayList<>();
     private static ProductCategoryDaoMem instance = null;
     private static Connection cursor = ConnToDB.getDb();
 
@@ -54,7 +53,7 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
             find.execute();
             ResultSet resultSet = find.getResultSet();
             resultSet.next();
-            return new ProductCategory(resultSet.getString("name"), resultSet.getString("department"), resultSet.getString("description"));
+            return new ProductCategory(resultSet.getInt("id"),resultSet.getString("name"), resultSet.getString("department"), resultSet.getString("description"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,6 +82,7 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
             ResultSet resultSet = find.getResultSet();
             while (resultSet.next()) {
                 result.add(new ProductCategory(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("department"),
                         resultSet.getString("description")));
