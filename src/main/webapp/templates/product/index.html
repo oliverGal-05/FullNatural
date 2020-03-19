@@ -31,6 +31,9 @@
     <!--Custom CSS and JS-->
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
     <script src="../../static/js/sorting.js" defer></script>
+    <script src="../../static/js/addToCart.js" defer></script>
+
+
 </head>
 
 <body id="background">
@@ -71,11 +74,10 @@
             <button class="reset-filters btn btn-secondary">Reset Filters</button>
         </div>
 
-</div>
+    </div>
 
 
-<!--Category dropdown -->
-
+    <!--Category dropdown -->
 
 
     <div class="container" id="opacity">
@@ -90,22 +92,32 @@
 </div>
 
 <div>
-    <button class="reset-filters btn btn-secondary" id="btn-cart"></button>
+    <button class="btn btn-secondary" id="btn-cart" data-toggle="modal" data-target="#cart-modal"></button>
 </div>
 
-<!---->
-<!--<div class="card">-->
-<!--<div class="flex-container" style="background: none" id="card">-->
-<!--<div>-->
-<!--<strong th:text="${category.name}">Category Title</strong>-->
-<!--</div>-->
-<!--<div class="divider"></div>-->
-<!--<div style="align-self: flex-end">-->
-<!--<a class="btn btn-success" id="btn-cart" href="#"> </a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!---->
+
+<!-- Modal -->
+<div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="cart-table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--Product section-->
 
@@ -122,11 +134,11 @@
                 <p class="card-text" th:text="${prod.description}">Product description... </p>
             </div>
             <div class="card-body" id="card-body">
-                <div class="card-text">
+                <div class="card-text price-text">
                     <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                 </div>
                 <div class="card-text">
-                    <a class="btn btn-success" id="add-btn" href="#">Add to cart</a>
+                    <button class="btn btn-success addToCartButton" id="add-btn">Add to cart</button>
                 </div>
             </div>
             <label class="producer" id="producer" th:text="${prod.getSupplier.name}">Supplier</label>
