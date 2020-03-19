@@ -16,7 +16,6 @@ function resetCategories() {
 
 function resetCategoriesButtonSetup() {
     const resetCategoriesButton = document.querySelector(".reset-category-btn");
-    console.log(resetCategoriesButton);
     resetCategoriesButton.addEventListener('click', function () {
         resetCategories()
     })
@@ -35,7 +34,6 @@ function sortCategories() {
                 category.lastElementChild.setAttribute("class", "dropdown-item supplier-name filter");
                 setAttributes(cards);
                 selectedCategories.remove("All categories");
-                console.log(selectedCategories)
             }
             if (selectedCategories.has("All categories")) {
                 resetCategories();
@@ -60,7 +58,6 @@ function resetSuppliers() {
 
 function resetSuppliersButtonSetup() {
     const resetSuppliersButton = document.querySelector(".reset-suppliers-btn");
-    console.log(resetSuppliersButton);
     resetSuppliersButton.addEventListener('click', function () {
         resetSuppliers()
     })
@@ -96,7 +93,6 @@ function sortSuppliers() {
 
 function resetFiltersButtonSetup() {
     let resetButton = document.querySelector(".reset-filters");
-    console.log(resetButton);
     resetButton.addEventListener('click', function () {
         resetCategories();
         for (let category of suppliers) {
@@ -115,7 +111,6 @@ function resetFiltersButtonSetup() {
 function setAttributes(elements) {
     for (let element of elements) {
         if (selectedCategories.has(element.firstElementChild.innerHTML) && selectedSuppliers.has(element.lastElementChild.innerHTML)) {
-            console.log(selectedCategories);
             element.setAttribute("class", "card");
             element.parentElement.setAttribute("class", "col col-sm-12 col-md-6 col-lg-4");
             console.log("Shown the following: " + element.firstElementChild.innerHTML + " " + element.lastElementChild.innerHTML)

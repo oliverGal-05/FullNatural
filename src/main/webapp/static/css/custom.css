@@ -114,10 +114,6 @@ body {
     right: 11px;
 }
 
-#btn-cart:hover {
-    transform: scale(1.5);
-}
-
 .divider {
     width: 865px;
     display: inline-block;
