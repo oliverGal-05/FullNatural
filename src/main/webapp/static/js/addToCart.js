@@ -1,5 +1,5 @@
 let cart = "";
-console.log(cart)
+console.log(cart);
 let productName;
 let productPrice;
 
@@ -9,16 +9,17 @@ function setupAddToCartButtons() {
         addToCartButton.addEventListener("click", function () {
             productName = addToCartButton.parentElement.parentElement.parentElement.getElementsByClassName("card-title")[0].innerHTML;
             productPrice = addToCartButton.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML;
-            let product = productName + " " + productPrice;
-
             let tableRef = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-
             let newRow = tableRef.insertRow(tableRef.rows.length);
             let newCell = newRow.insertCell(0);
-            let newText = document.createTextNode(product);
+            let newText = document.createTextNode(productName+"  ");
             newCell.appendChild(newText);
-            let newDeletebutton = document.createElement("BUTTON")
+            let newCell2 = newRow.insertCell(1);
+            let newText2 = document.createTextNode(productPrice+"  ");
+            newCell2.appendChild(newText2);
+            let newDeletebutton = document.createElement("BUTTON");
             newDeletebutton.innerHTML = "🗑";
+            newDeletebutton.setAttribute('class',"btn-danger");
             newRow.appendChild(newDeletebutton)
         })
     })
