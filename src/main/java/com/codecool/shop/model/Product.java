@@ -5,7 +5,7 @@ import java.util.Currency;
 public class Product extends BaseModel {
 
     private float defaultPrice;
-    private Currency defaultCurrency;
+    private String defaultCurrency;
     private ProductCategory productCategory;
     private Supplier supplier;
 
@@ -16,6 +16,13 @@ public class Product extends BaseModel {
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
     }
+    public Product(int id,String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
+        super(id, name, description);
+        this.setPrice(defaultPrice, currencyString);
+        this.setSupplier(supplier);
+        this.setProductCategory(productCategory);
+    }
+
 
     public float getDefaultPrice() {
         return defaultPrice;
@@ -25,11 +32,11 @@ public class Product extends BaseModel {
         this.defaultPrice = defaultPrice;
     }
 
-    public Currency getDefaultCurrency() {
+    public String getDefaultCurrency() {
         return defaultCurrency;
     }
 
-    public void setDefaultCurrency(Currency defaultCurrency) {
+    public void setDefaultCurrency(String defaultCurrency) {
         this.defaultCurrency = defaultCurrency;
     }
 
@@ -39,7 +46,7 @@ public class Product extends BaseModel {
 
     public void setPrice(float price, String currency) {
         this.defaultPrice = price;
-        this.defaultCurrency = Currency.getInstance(currency);
+        this.defaultCurrency = currency;
     }
 
     public ProductCategory getProductCategory() {

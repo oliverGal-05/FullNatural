@@ -22,6 +22,8 @@ public class ProductDaoMem implements ProductDao {
     private List<Product> data = new ArrayList<>();
     private static ProductDaoMem instance = null;
     private static Connection cursor = ConnToDB.getDb();
+    private ProductCategoryDaoMem productCategoryDaoMem = ProductCategoryDaoMem.getInstance();
+    private SupplierDaoMem supplierDaoMem = SupplierDaoMem.getInstance();
 
     /* A private Constructor prevents any other class from instantiating.
      */
@@ -38,43 +40,124 @@ public class ProductDaoMem implements ProductDao {
 
     @Override
     public void add(Product product) {
-        product.setId(data.size() + 1);
-        data.add(product);
-        /*try {
-            PreparedStatement prepAdd = cursor.prepareStatement("INSERT INTO product" + "(name, product_category_id, supplier_id, default_price, currency_string, description) VALUES  (?,?,?,?,?,?)",
+        try {
+            PreparedStatement prepAdd = cursor.prepareStatement("INSERT INTO product" +
+                            "(name, product_category_id, supplier_id, default_price, currency_string, description) VALUES  (?,?,?,?,?,?)",
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
             prepAdd.setString(1, product.getName());
             prepAdd.setInt(2, product.getProductCategory().getId());
-            prepAdd.setInt(3, (int) product.getSupplier().getId());
-            prepAdd.setString(4, String.valueOf(product.getDefaultCurrency()));
-            prepAdd.setString(5, product.getDescription());
+            prepAdd.setInt(3, product.getSupplier().getId());
+            prepAdd.setFloat(4, product.getDefaultPrice());
+            prepAdd.setString(5, product.getDefaultCurrency());
+            prepAdd.setString(6, product.getDescription());
         } catch (SQLException e){
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override
     public Product find(int id) {
-        return data.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+        try{
+            PreparedStatement find = cursor.prepareStatement("SELECT * FROM product" +
+                    " WHERE id = (?)");
+            find.setInt(1, id);
+            find.execute();
+            ResultSet resultSet = find.getResultSet();
+            return new Product(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"), resultSet.getInt("default_price"),
+                    resultSet.getString("currency_string"),
+                    resultSet.getString("description"),
+                    productCategoryDaoMem.find(resultSet.getInt("product_category_id")),
+                    supplierDaoMem.find(resultSet.getInt("supplier_id")));
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public void remove(int id) {
-        data.remove(find(id));
+        try{
+            PreparedStatement remove = cursor.prepareStatement(
+                    "DELETE FROM product WHERE id = (?)");
+            remove.setInt(1, id);
+            remove.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Product> getAll() {
-        return data;
+        try {
+            ArrayList<Product> result = new ArrayList<>();
+            PreparedStatement find = cursor.prepareStatement("SELECT * FROM product");
+            find.execute();
+            ResultSet resultSet = find.getResultSet();
+            while (resultSet.next()) {
+                result.add(new Product(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        resultSet.getString("description"),
+                        resultSet.getString("currency_string"),
+                        productCategoryDaoMem.find(resultSet.getInt("product_category_id")),
+                        supplierDaoMem.find(resultSet.getInt("supplier_id"))));
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<Product> getBy(Supplier supplier) {
-        return data.stream().filter(t -> t.getSupplier().equals(supplier)).collect(Collectors.toList());
+        try {
+            ArrayList<Product> result = new ArrayList<>();
+            PreparedStatement getBySupp = cursor.prepareStatement("SELECT * FROM product WHERE supplier_id = (?)");
+            getBySupp.setInt(1,supplier.getId());
+            ResultSet resultSet = getBySupp.getResultSet();
+            while (resultSet.next()) {
+                result.add(new Product(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        resultSet.getString("description"),
+                        resultSet.getString("currency_string"),
+                        productCategoryDaoMem.find(resultSet.getInt("product_category_id")),
+                        supplierDaoMem.find(resultSet.getInt("supplier_id"))));
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<Product> getBy(ProductCategory productCategory) {
-        return data.stream().filter(t -> t.getProductCategory().equals(productCategory)).collect(Collectors.toList());
+        try {
+            ArrayList<Product> result = new ArrayList<>();
+            PreparedStatement getByCat = cursor.prepareStatement("SELECT * FROM product WHERE product_category_id = (?)");
+            getByCat.setInt(1,productCategory.getId());
+            ResultSet resultSet = getByCat.getResultSet();
+            while (resultSet.next()) {
+                result.add(new Product(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getFloat("default_price"),
+                        resultSet.getString("description"),
+                        resultSet.getString("currency_string"),
+                        productCategoryDaoMem.find(resultSet.getInt("product_category_id")),
+                        supplierDaoMem.find(resultSet.getInt("supplier_id"))));
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
